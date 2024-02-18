@@ -7,16 +7,19 @@ class ArticlesDatasource implements IArticlesDatasource {
   final dio = Dio(
     BaseOptions(
       baseUrl: 'https://newsapi.org/v2',
-      queryParameters: {
-        'apiKey': Environment.newsApiKey,
+      headers: {
+        'Authorization': 'Bearer ${Environment.newsApiKey}',
       },
     ),
   );
 
   @override
-  Future<ArticleResponseDto> getArticles({int page = 1}) async {
-    final reponse = await dio.get('/top-headlines',
-        queryParameters: {'country': 'de', 'category': 'business'});
+  Future<ArticleResponseDto> getArticles({int page = 50}) async {
+    final reponse = await dio.get('/everything', queryParameters: {
+      'q': 'bitcoin',
+      //'page': page,
+    });
+    //queryParameters: {'country': 'de', 'category': 'business'});
     return ArticleResponseDto.fromJson(reponse.data);
   }
 }

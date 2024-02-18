@@ -33,11 +33,18 @@ class _HomeViewState extends ConsumerState<HomeView>
     }
 
     return Scaffold(
-        body: ArticlesMasonryGridView(
-      articles: articles,
-      loadNextPage: () =>
-          ref.read(topHeadlinesArticles.notifier).loadNextPage(),
-    ));
+      appBar: AppBar(
+        title: const Text('Flash News'),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+        ],
+      ),
+      body: ArticlesMasonryGridView(
+        articles: articles,
+        loadNextPage: () =>
+            ref.read(topHeadlinesArticles.notifier).loadNextPage(),
+      ),
+    );
   }
 
   @override

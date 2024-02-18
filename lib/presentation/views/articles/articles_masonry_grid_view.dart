@@ -48,7 +48,7 @@ class _ArticlesMasonryGridViewState extends State<ArticlesMasonryGridView> {
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: MasonryGridView.count(
         controller: scrollController,
-        crossAxisCount: 3,
+        crossAxisCount: 1,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
         itemCount: widget.articles.length,
