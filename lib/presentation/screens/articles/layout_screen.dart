@@ -1,3 +1,4 @@
+import 'package:flash_news/presentation/views/articles/home_view.dart';
 import 'package:flash_news/presentation/widgets/shared/custom_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 
@@ -31,12 +32,7 @@ class _LayoutScreenState extends State<LayoutScreen>
   }
 
   final views = const <Widget>[
-    Center(
-      child: Text(
-        'HOME',
-        style: TextStyle(fontSize: 30),
-      ),
-    ),
+    HomeView(),
     Center(
       child: Text(
         'FAVORITES',
