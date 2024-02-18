@@ -2,10 +2,10 @@ import 'package:flash_news/config/helpers/format_helper.dart';
 import 'package:flash_news/domain/entities/article.dart';
 import 'package:flutter/material.dart';
 
-class TitleAndDescription extends StatelessWidget {
+class ArticleCard extends StatelessWidget {
   final Article article;
   final Size size;
-  const TitleAndDescription({
+  const ArticleCard({
     super.key,
     required this.article,
     required this.size,

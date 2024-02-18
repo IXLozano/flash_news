@@ -2,9 +2,9 @@ import 'package:flash_news/domain/entities/article.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FaforitesToggleButton extends ConsumerWidget {
+class FaforiteToggleButton extends ConsumerWidget {
   final Article article;
-  const FaforitesToggleButton({
+  const FaforiteToggleButton({
     super.key,
     required this.article,
   });
@@ -12,6 +12,7 @@ class FaforitesToggleButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     //final isArticleFavorite = ref.watch(provider)
-    return const Placeholder();
+    return IconButton(
+        onPressed: () {}, icon: const Icon(Icons.favorite_outline));
   }
 }
