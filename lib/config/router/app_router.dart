@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flash_news/presentation/screens/articles/layout_screen.dart';
 import 'package:go_router/go_router.dart';
 
 // GoRouterConfig: Manages route configuration for the app.
@@ -18,7 +18,7 @@ class GoRouterConfig {
             builder: (context, state) {
               // Extracts 'page' parameter from the route, defaults to '0'.
               final pageIndex = int.parse(state.pathParameters['page'] ?? '0');
-              return const Placeholder();
+              return LayoutScreen(pageIndex: pageIndex);
             },
           )
         ],
