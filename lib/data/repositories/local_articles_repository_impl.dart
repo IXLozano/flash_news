@@ -14,8 +14,8 @@ class LocalArticlesRepositoryImpl extends ILocalArticlesRepository {
   }
 
   @override
-  Future<List<Article>> loadArticles({int limit = 10, offset = 0}) {
-    return _datasource.loadArticles(limit: limit, offset: offset);
+  Future<List<Article>> loadLocalArticles({int limit = 10, offset = 0}) {
+    return _datasource.loadLocalArticles(limit: limit, offset: offset);
   }
 
   @override

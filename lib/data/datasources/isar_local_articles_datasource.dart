@@ -29,7 +29,7 @@ class IsarLocalArticlesDatasource extends ILocalArticlesDatasource {
   }
 
   @override
-  Future<List<Article>> loadArticles({int limit = 10, offset = 0}) async {
+  Future<List<Article>> loadLocalArticles({int limit = 10, offset = 0}) async {
     final isar = await db;
     return isar.articles.where().offset(offset).limit(limit).findAll();
   }
@@ -39,7 +39,7 @@ class IsarLocalArticlesDatasource extends ILocalArticlesDatasource {
     final isarDB = await db;
     final favoriteArticle = await isarDB.articles
         .filter()
-        .isarIdEqualTo(article.isarId)
+        .articleIdEqualTo(article.articleId)
         .findFirst();
     if (favoriteArticle != null) {
       // Delete Article From Favorites

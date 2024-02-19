@@ -5,5 +5,5 @@ abstract class ILocalArticlesDatasource {
 
   Future<bool> isArticleFavorite(String articleId);
 
-  Future<List<Article>> loadArticles({int limit = 10, offset = 0});
+  Future<List<Article>> loadLocalArticles({int limit = 10, offset = 0});
 }

@@ -6,6 +6,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 class ArticlesMasonryGridView extends StatefulWidget {
   final List<Article> articles;
   final VoidCallback? loadNextPage;
+
   const ArticlesMasonryGridView({
     super.key,
     required this.articles,

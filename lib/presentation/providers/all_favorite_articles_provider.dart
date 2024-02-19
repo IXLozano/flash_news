@@ -3,7 +3,9 @@ import 'package:flash_news/domain/repositories/i_local_articles_repository.dart'
 import 'package:flash_news/presentation/providers/local_articles_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final allFavoriteArticlesProvider = StateNotifierProvider((ref) {
+final allFavoriteArticlesProvider =
+    StateNotifierProvider<AllFavoriteArticlesMapNotifier, Map<String, Article>>(
+        (ref) {
   final repository = ref.read(localArticlesRepositoryProvider);
   return AllFavoriteArticlesMapNotifier(repository: repository);
 });
@@ -17,7 +19,7 @@ class AllFavoriteArticlesMapNotifier
 
   Future<List<Article>> loadNexPage() async {
     final articles =
-        await repository.loadArticles(offset: page * 10, limit: 20);
+        await repository.loadLocalArticles(offset: page * 10, limit: 20);
 
     page++;
 
@@ -37,10 +39,10 @@ class AllFavoriteArticlesMapNotifier
 
   Future<void> toggleFavorite(Article article) async {
     await repository.toggleFavorite(article);
-    final bool isArticleFavorite = state[article.isarId] != null;
+    final bool isArticleFavorite = state[article.articleId] != null;
 
     if (isArticleFavorite) {
-      state.remove(article.isarId);
+      state.remove(article.articleId);
       state = {...state};
     } else {
       state = {...state, article.articleId: article};

@@ -30,7 +30,9 @@ class FavoriteToggleButton extends ConsumerWidget {
                   Icons.favorite_rounded,
                   color: Colors.red,
                 )
-              : const Icon(Icons.favorite_border);
+              : const Icon(
+                  Icons.favorite_border,
+                );
         },
         error: (error, stackTrace) => Tooltip(
           message: 'Error: ${error.toString()}',

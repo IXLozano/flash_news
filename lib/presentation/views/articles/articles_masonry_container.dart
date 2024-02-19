@@ -14,10 +14,12 @@ class ArticleMasonryContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return GestureDetector(
-        onTap: () => {},
-        child: FadeIn(
-            duration: const Duration(milliseconds: 400),
-            delay: const Duration(milliseconds: 250),
-            child: ArticleCard(article: article, size: size)));
+      onTap: () => {}, //Article View implementation missing
+      child: FadeIn(
+        duration: const Duration(milliseconds: 400),
+        delay: const Duration(milliseconds: 250),
+        child: ArticleCard(article: article, size: size),
+      ),
+    );
   }
 }
