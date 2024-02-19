@@ -1,5 +1,6 @@
 import 'package:flash_news/config/helpers/format_helper.dart';
 import 'package:flash_news/domain/entities/article.dart';
+import 'package:flash_news/presentation/widgets/shared/favorite_toggle_button.dart';
 import 'package:flutter/material.dart';
 
 class ArticleCard extends StatelessWidget {
@@ -72,25 +73,39 @@ class ArticleCard extends StatelessWidget {
           ),
           const SizedBox(width: 10),
 
-          //* Title and Description
+          //* Title, Favorite Button and Description
           SizedBox(
             width: size.width * 0.6,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Title
-                (article.title.length > 45)
-                    ? Text(
-                        '${article.title.substring(0, 45)}...',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      )
-                    : Text(
-                        article.title,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                const SizedBox(height: 5),
+                // Title and Favorite Button
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    (article.title.length > 45)
+                        ? SizedBox(
+                            width: size.width * 0.48,
+                            child: Text(
+                              '${article.title.substring(0, 45)}...',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                          )
+                        : SizedBox(
+                            width: size.width * 0.4,
+                            child: Text(
+                              article.title,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                          ),
+                    const SizedBox(height: 5),
+                    const Spacer(),
+                    FavoriteToggleButton(article: article),
+                  ],
+                ),
 
                 // Description
                 (article.description.length > 140)
@@ -98,7 +113,7 @@ class ArticleCard extends StatelessWidget {
                     : Text(article.description),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

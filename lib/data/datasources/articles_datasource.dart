@@ -15,11 +15,8 @@ class ArticlesDatasource implements IArticlesDatasource {
 
   @override
   Future<ArticleResponseDto> getArticles({int page = 50}) async {
-    final reponse = await dio.get('/everything', queryParameters: {
-      'q': 'bitcoin',
-      //'page': page,
-    });
-    //queryParameters: {'country': 'de', 'category': 'business'});
+    final reponse = await dio
+        .get('/everything', queryParameters: {'q': 'bitcoin', 'page': page});
     return ArticleResponseDto.fromJson(reponse.data);
   }
 }

@@ -10,7 +10,7 @@ class ArticlesRepositoryImpl implements IArticlesRepository {
       : _datasource = datasource;
   @override
   Future<List<Article>> getArticles({int page = 1}) async {
-    final response = await _datasource.getArticles();
+    final response = await _datasource.getArticles(page: page);
     return response.articles.map(ArticleMapper.fromDtoToEntity).toList();
   }
 }

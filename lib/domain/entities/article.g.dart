@@ -118,6 +118,7 @@ Article _articleDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = Article(
+    articleId: reader.readString(offsets[0]),
     author: reader.readString(offsets[1]),
     content: reader.readString(offsets[2]),
     description: reader.readString(offsets[3]),
@@ -127,7 +128,6 @@ Article _articleDeserialize(
     url: reader.readString(offsets[7]),
     urlToImage: reader.readString(offsets[8]),
   );
-  object.articleId = reader.readString(offsets[0]);
   object.isarId = id;
   return object;
 }

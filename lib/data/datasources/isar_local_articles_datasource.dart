@@ -37,10 +37,9 @@ class IsarLocalArticlesDatasource extends ILocalArticlesDatasource {
   @override
   Future<void> toggleFavorite(Article article) async {
     final isarDB = await db;
-    //final articleId = article.compositeArticleId;
     final favoriteArticle = await isarDB.articles
         .filter()
-        .articleIdEqualTo(article.articleId)
+        .isarIdEqualTo(article.isarId)
         .findFirst();
     if (favoriteArticle != null) {
       // Delete Article From Favorites
