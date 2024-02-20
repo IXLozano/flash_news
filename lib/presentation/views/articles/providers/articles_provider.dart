@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../domain/entities/article.dart';
 import '../../../providers/articles_repository_provider.dart';
 
-final topHeadlinesArticles =
+final articlesProvider =
     StateNotifierProvider<ArticlesNotifier, List<Article>>((ref) {
   final repoFunction = ref.read(articlesRepositoryProvider).getArticles;
   return ArticlesNotifier(articleRepositoryFunction: repoFunction);
@@ -27,5 +27,9 @@ class ArticlesNotifier extends StateNotifier<List<Article>> {
     state = [...state, ...articles];
     await Future.delayed(const Duration(milliseconds: 300));
     isLoading = false;
+  }
+
+  void updateArticles(List<Article> newArticles) {
+    state = newArticles;
   }
 }
