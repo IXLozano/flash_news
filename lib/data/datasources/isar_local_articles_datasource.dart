@@ -1,7 +1,8 @@
-import 'package:flash_news/domain/datasources/i_local_articles_datasource.dart';
-import 'package:flash_news/domain/entities/article.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../domain/datasources/i_local_articles_datasource.dart';
+import '../../domain/entities/article.dart';
 
 class IsarLocalArticlesDatasource extends ILocalArticlesDatasource {
   late Future<Isar> db;
@@ -13,8 +14,11 @@ class IsarLocalArticlesDatasource extends ILocalArticlesDatasource {
   Future<Isar> openDB() async {
     if (Isar.instanceNames.isEmpty) {
       final dir = await getApplicationDocumentsDirectory();
-      return await Isar.open([ArticleSchema],
-          directory: dir.path, inspector: true);
+      return await Isar.open(
+        [ArticleSchema],
+        directory: dir.path,
+        inspector: true,
+      );
     }
     return Future.value(Isar.getInstance());
   }

@@ -1,5 +1,6 @@
-import 'package:flash_news/presentation/providers/local_articles_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'local_articles_repository_provider.dart';
 
 final isArticleFavoriteProvider =
     FutureProvider.family.autoDispose((ref, String articleId) async {

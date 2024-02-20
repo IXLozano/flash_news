@@ -1,6 +1,7 @@
-import 'package:flash_news/domain/entities/article.dart';
-import 'package:flash_news/presentation/providers/articles_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../domain/entities/article.dart';
+import '../../../providers/articles_repository_provider.dart';
 
 final topHeadlinesArticles =
     StateNotifierProvider<ArticlesNotifier, List<Article>>((ref) {

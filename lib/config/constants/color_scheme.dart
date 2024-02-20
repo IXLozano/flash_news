@@ -4,5 +4,5 @@ const colorScheme = <Color>[
   Colors.deepPurple,
   Colors.teal,
   Colors.indigo,
-  Colors.pink
+  Colors.pink,
 ];

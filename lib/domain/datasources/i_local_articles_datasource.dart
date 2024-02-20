@@ -1,4 +1,4 @@
-import 'package:flash_news/domain/entities/article.dart';
+import '../entities/article.dart';
 
 abstract class ILocalArticlesDatasource {
   Future<void> toggleFavorite(Article article);

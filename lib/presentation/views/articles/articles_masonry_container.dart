@@ -1,7 +1,8 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:flash_news/domain/entities/article.dart';
-import 'package:flash_news/presentation/views/articles/article_card.dart';
 import 'package:flutter/material.dart';
+
+import '../../../domain/entities/article.dart';
+import 'article_card.dart';
 
 class ArticleMasonryContainer extends StatelessWidget {
   final Article article;

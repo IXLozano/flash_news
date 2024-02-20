@@ -11,16 +11,17 @@ class ArticleResponseDto {
 
   factory ArticleResponseDto.fromJson(Map<String, dynamic> json) =>
       ArticleResponseDto(
-        status: json["status"] ?? '',
-        totalResults: json["totalResults"] ?? '',
+        status: json['status'] ?? '',
+        totalResults: json['totalResults'] ?? '',
         articles: List<ArticleDTO>.from(
-            json["articles"].map((x) => ArticleDTO.fromJson(x))),
+          json['articles'].map((x) => ArticleDTO.fromJson(x)),
+        ),
       );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "totalResults": totalResults,
-        "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
+        'status': status,
+        'totalResults': totalResults,
+        'articles': List<dynamic>.from(articles.map((x) => x.toJson())),
       };
 }
 
@@ -46,27 +47,27 @@ class ArticleDTO {
   });
 
   factory ArticleDTO.fromJson(Map<String, dynamic> json) => ArticleDTO(
-        source: json["source"] != null ? json["source"]["name"] : '',
-        author: json["author"] ?? '',
-        title: json["title"] ?? '',
-        description: json["description"] ?? '',
-        url: json["url"] ?? '',
-        urlToImage: json["urlToImage"] ?? '',
-        publishedAt: json["publishedAt"].toString().isNotEmpty
-            ? DateTime.parse(json["publishedAt"])
+        source: json['source'] != null ? json['source']['name'] : '',
+        author: json['author'] ?? '',
+        title: json['title'] ?? '',
+        description: json['description'] ?? '',
+        url: json['url'] ?? '',
+        urlToImage: json['urlToImage'] ?? '',
+        publishedAt: json['publishedAt'].toString().isNotEmpty
+            ? DateTime.parse(json['publishedAt'])
             : null,
-        content: json["content"] ?? '',
+        content: json['content'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
-        "source": source,
-        "author": author,
-        "title": title,
-        "description": description,
-        "url": url,
-        "urlToImage": urlToImage,
-        "publishedAt":
+        'source': source,
+        'author': author,
+        'title': title,
+        'description': description,
+        'url': url,
+        'urlToImage': urlToImage,
+        'publishedAt':
             publishedAt != null ? publishedAt!.toIso8601String() : '',
-        "content": content,
+        'content': content,
       };
 }

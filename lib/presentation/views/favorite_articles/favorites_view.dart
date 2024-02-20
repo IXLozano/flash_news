@@ -1,8 +1,9 @@
-import 'package:flash_news/presentation/providers/all_favorite_articles_provider.dart';
-import 'package:flash_news/presentation/views/articles/articles_masonry_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../providers/all_favorite_articles_provider.dart';
+import '../articles/articles_masonry_grid_view.dart';
 
 class FavoritesView extends ConsumerStatefulWidget {
   const FavoritesView({super.key});
@@ -59,7 +60,7 @@ class _FavoritesViewState extends ConsumerState<FavoritesView> {
             FilledButton.tonal(
               onPressed: () => context.go('/home/0'),
               child: const Text('Start adding!'),
-            )
+            ),
           ],
         ),
       );

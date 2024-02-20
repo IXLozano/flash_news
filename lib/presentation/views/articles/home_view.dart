@@ -1,7 +1,8 @@
-import 'package:flash_news/presentation/views/articles/articles_masonry_grid_view.dart';
-import 'package:flash_news/presentation/views/articles/providers/articles_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'articles_masonry_grid_view.dart';
+import 'providers/articles_provider.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
@@ -36,7 +37,7 @@ class _HomeViewState extends ConsumerState<HomeView>
       appBar: AppBar(
         title: const Text('Flash News'),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
         ],
       ),
       body: ArticlesMasonryGridView(

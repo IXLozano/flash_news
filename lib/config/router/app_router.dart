@@ -1,5 +1,6 @@
-import 'package:flash_news/presentation/screens/articles/layout_screen.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../presentation/screens/articles/layout_screen.dart';
 
 // GoRouterConfig: Manages route configuration for the app.
 class GoRouterConfig {
@@ -20,7 +21,7 @@ class GoRouterConfig {
               final pageIndex = int.parse(state.pathParameters['page'] ?? '0');
               return LayoutScreen(pageIndex: pageIndex);
             },
-          )
+          ),
         ],
       );
 }

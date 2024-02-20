@@ -1,7 +1,8 @@
-import 'package:flash_news/presentation/views/articles/home_view.dart';
-import 'package:flash_news/presentation/views/favorite_articles/favorites_view.dart';
-import 'package:flash_news/presentation/widgets/shared/custom_bottom_navigation.dart';
 import 'package:flutter/material.dart';
+
+import '../../views/articles/home_view.dart';
+import '../../views/favorite_articles/favorites_view.dart';
+import '../../widgets/shared/custom_bottom_navigation.dart';
 
 class LayoutScreen extends StatefulWidget {
   static const name = 'layout-screen';

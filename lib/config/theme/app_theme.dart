@@ -1,5 +1,6 @@
-import 'package:flash_news/config/constants/color_scheme.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/color_scheme.dart';
 
 class AppTheme {
   final int selectedColor;

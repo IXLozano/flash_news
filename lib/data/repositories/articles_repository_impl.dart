@@ -1,7 +1,7 @@
-import 'package:flash_news/data/mappers/article_mapper.dart';
-import 'package:flash_news/domain/datasources/i_articles_datasource.dart';
-import 'package:flash_news/domain/entities/article.dart';
-import 'package:flash_news/domain/repositories/i_articles_repository.dart';
+import '../../domain/datasources/i_articles_datasource.dart';
+import '../../domain/entities/article.dart';
+import '../../domain/repositories/i_articles_repository.dart';
+import '../mappers/article_mapper.dart';
 
 class ArticlesRepositoryImpl implements IArticlesRepository {
   final IArticlesDatasource _datasource;

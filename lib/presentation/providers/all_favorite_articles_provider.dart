@@ -1,8 +1,10 @@
-import 'package:flash_news/domain/entities/article.dart';
-import 'package:flash_news/domain/repositories/i_local_articles_repository.dart';
-import 'package:flash_news/presentation/providers/local_articles_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../domain/entities/article.dart';
+import '../../domain/repositories/i_local_articles_repository.dart';
+import 'local_articles_repository_provider.dart';
+
+// Provides a Map that contains the ID and it's Article object
 final allFavoriteArticlesProvider =
     StateNotifierProvider<AllFavoriteArticlesMapNotifier, Map<String, Article>>(
         (ref) {

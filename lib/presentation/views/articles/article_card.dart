@@ -1,7 +1,8 @@
-import 'package:flash_news/config/helpers/format_helper.dart';
-import 'package:flash_news/domain/entities/article.dart';
-import 'package:flash_news/presentation/widgets/shared/favorite_toggle_button.dart';
 import 'package:flutter/material.dart';
+
+import '../../../config/helpers/format_helper.dart';
+import '../../../domain/entities/article.dart';
+import '../../widgets/shared/favorite_toggle_button.dart';
 
 class ArticleCard extends StatelessWidget {
   final Article article;
@@ -17,7 +18,9 @@ class ArticleCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-          color: Colors.grey.shade800, borderRadius: BorderRadius.circular(16)),
+        color: Colors.grey.shade800,
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,15 +38,21 @@ class ArticleCard extends StatelessWidget {
                           article.urlToImage,
                           fit: BoxFit.cover,
                           width: size.width * 0.3,
-                          errorBuilder: (BuildContext context, Object error,
-                              StackTrace? stackTrace) {
-                            // Here you can return any widget you want to show in case of an error.
+                          errorBuilder: (
+                            BuildContext context,
+                            Object error,
+                            StackTrace? stackTrace,
+                          ) {
+                            // Here you can return any widget you want to show
+                            // in case of an error.
                             // For example, an icon or a placeholder image.
                             return SizedBox(
                               height: 100,
                               width: size.width * 0.3,
-                              child: const Icon(Icons.newspaper_outlined,
-                                  size: 60),
+                              child: const Icon(
+                                Icons.newspaper_outlined,
+                                size: 60,
+                              ),
                             );
                           },
                         ),
@@ -67,8 +76,11 @@ class ArticleCard extends StatelessWidget {
               const SizedBox(height: 10),
 
               //Publish Date
-              Text(FormatHelper.shortDate(
-                  article.publishedAt ?? DateTime.now())),
+              Text(
+                FormatHelper.shortDate(
+                  article.publishedAt ?? DateTime.now(),
+                ),
+              ),
             ],
           ),
           const SizedBox(width: 10),
@@ -90,7 +102,9 @@ class ArticleCard extends StatelessWidget {
                             child: Text(
                               '${article.title.substring(0, 45)}...',
                               style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
                           )
                         : SizedBox(
@@ -98,7 +112,9 @@ class ArticleCard extends StatelessWidget {
                             child: Text(
                               article.title,
                               style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
                           ),
                     const SizedBox(height: 5),

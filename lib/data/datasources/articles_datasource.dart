@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flash_news/config/constants/environment.dart';
-import 'package:flash_news/data/models/article_response_dto.dart';
-import 'package:flash_news/domain/datasources/i_articles_datasource.dart';
+
+import '../../config/constants/environment.dart';
+import '../../domain/datasources/i_articles_datasource.dart';
+import '../models/article_response_dto.dart';
 
 class ArticlesDatasource implements IArticlesDatasource {
   final dio = Dio(

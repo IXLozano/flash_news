@@ -1,8 +1,9 @@
-import 'package:flash_news/domain/entities/article.dart';
-import 'package:flash_news/presentation/providers/all_favorite_articles_provider.dart';
-import 'package:flash_news/presentation/providers/is_article_favorite_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../domain/entities/article.dart';
+import '../../providers/all_favorite_articles_provider.dart';
+import '../../providers/is_article_favorite_provider.dart';
 
 class FavoriteToggleButton extends ConsumerWidget {
   final Article article;

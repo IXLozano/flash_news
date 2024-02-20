@@ -1,7 +1,8 @@
-import 'package:flash_news/domain/entities/article.dart';
-import 'package:flash_news/presentation/views/articles/articles_masonry_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+import '../../../domain/entities/article.dart';
+import 'articles_masonry_container.dart';
 
 class ArticlesMasonryGridView extends StatefulWidget {
   final List<Article> articles;

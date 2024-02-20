@@ -1,6 +1,6 @@
-import 'package:flash_news/domain/datasources/i_local_articles_datasource.dart';
-import 'package:flash_news/domain/entities/article.dart';
-import 'package:flash_news/domain/repositories/i_local_articles_repository.dart';
+import '../../domain/datasources/i_local_articles_datasource.dart';
+import '../../domain/entities/article.dart';
+import '../../domain/repositories/i_local_articles_repository.dart';
 
 class LocalArticlesRepositoryImpl extends ILocalArticlesRepository {
   final ILocalArticlesDatasource _datasource;
