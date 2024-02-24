@@ -42,7 +42,7 @@ class FavoriteToggleButton extends ConsumerWidget {
             color: Colors.red,
           ),
         ),
-        loading: () => const CircularProgressIndicator(strokeWidth: 2),
+        loading: () => const SizedBox.shrink(),
       ),
     );
   }
