@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-import '../data/background_datasources/background_articles_datasource.dart';
+import '../../data/datasources/background_articles_datasource.dart';
 
 class MethodChannelSetup {
   static const MethodChannel channel =
@@ -9,7 +9,7 @@ class MethodChannelSetup {
   static void setupChannel() {
     channel.setMethodCallHandler((call) async {
       if (call.method == 'backgroundFetch') {
-        await ArticlesFetcher.fetchArticlesInBackground();
+        await BackgroundArticlesDatasource.fetchArticlesInBackground();
         print('IOS Background proccess Fetched new data');
         return true; // Return true if new data was fetched, false otherwise
       }

@@ -12,46 +12,64 @@ class IsarLocalArticlesDatasource extends ILocalArticlesDatasource {
   }
 
   Future<Isar> openDB() async {
-    if (Isar.instanceNames.isEmpty) {
-      final dir = await getApplicationDocumentsDirectory();
-      return await Isar.open(
-        [ArticleSchema],
-        directory: dir.path,
-        inspector: true,
-      );
+    try {
+      if (Isar.instanceNames.isEmpty) {
+        final dir = await getApplicationDocumentsDirectory();
+        return await Isar.open(
+          [ArticleSchema],
+          directory: dir.path,
+          inspector: true,
+        );
+      }
+      return Future.value(Isar.getInstance());
+    } catch (e) {
+      throw Exception('Failed to open Isar database');
     }
-    return Future.value(Isar.getInstance());
   }
 
   @override
   Future<bool> isArticleFavorite(String articleId) async {
-    final isar = await db;
-    final Article? article =
-        await isar.articles.filter().articleIdEqualTo(articleId).findFirst();
+    try {
+      final isarDB = await db;
+      final Article? article = await isarDB.articles
+          .filter()
+          .articleIdEqualTo(articleId)
+          .findFirst();
 
-    return article != null;
+      return article != null;
+    } catch (e) {
+      throw Exception('Error checking article favorite status');
+    }
   }
 
   @override
   Future<List<Article>> loadLocalArticles({int limit = 10, offset = 0}) async {
-    final isar = await db;
-    return isar.articles.where().offset(offset).limit(limit).findAll();
+    try {
+      final isarDB = await db;
+      return isarDB.articles.where().offset(offset).limit(limit).findAll();
+    } catch (e) {
+      throw Exception('Error loading local articles');
+    }
   }
 
   @override
   Future<void> toggleFavorite(Article article) async {
-    final isarDB = await db;
-    final favoriteArticle = await isarDB.articles
-        .filter()
-        .articleIdEqualTo(article.articleId)
-        .findFirst();
-    if (favoriteArticle != null) {
-      // Delete Article From Favorites
-      await isarDB
-          .writeTxn(() => isarDB.articles.delete(favoriteArticle.isarId!));
-    } else {
-      // Insert Article To Favorites
-      await isarDB.writeTxn(() => isarDB.articles.put(article));
+    try {
+      final isarDB = await db;
+      final favoriteArticle = await isarDB.articles
+          .filter()
+          .articleIdEqualTo(article.articleId)
+          .findFirst();
+      if (favoriteArticle != null) {
+        // Delete Article From Favorites
+        await isarDB
+            .writeTxn(() => isarDB.articles.delete(favoriteArticle.isarId!));
+      } else {
+        // Insert Article To Favorites
+        await isarDB.writeTxn(() => isarDB.articles.put(article));
+      }
+    } catch (e) {
+      throw Exception('Error toggling favorite status');
     }
   }
 }

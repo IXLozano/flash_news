@@ -1,14 +1,14 @@
 // Unique identifier for the task
 import 'package:workmanager/workmanager.dart';
 
-import '../data/background_datasources/background_articles_datasource.dart';
+import '../../data/datasources/background_articles_datasource.dart';
 
 const fetchArticlesTask = 'fetchArticlesTask';
 
 void callbackDispatcher() {
   Workmanager().executeTask((taskName, inputData) async {
     if (taskName == fetchArticlesTask) {
-      await ArticlesFetcher.fetchArticlesInBackground();
+      await BackgroundArticlesDatasource.fetchArticlesInBackground();
     }
     return Future.value(true);
   });
