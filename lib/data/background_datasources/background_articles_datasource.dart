@@ -22,12 +22,12 @@ class ArticlesFetcher {
       final response = await dio
           .get('/everything', queryParameters: {'q': 'bitcoin', 'page': 1});
       if (response.statusCode == 200) {
-        print('Background Process Triggered API Endpoint Success');
-
         final String articlesJson = jsonEncode(response.data);
-        print('Articles JsonEncoded: $articlesJson');
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('articles', articlesJson);
+        await prefs.setString(
+          'articles',
+          articlesJson,
+        );
       } else {
         print('Failed to fetch articles');
       }
