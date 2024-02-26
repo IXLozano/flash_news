@@ -53,9 +53,6 @@ class _HomeViewState extends ConsumerState<HomeView>
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flash News'),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
-        ],
       ),
       body: ArticlesMasonryGridView(
         articles: articles,

@@ -1,6 +1,10 @@
 # Flutter Flash News
  "FlashNews: A sleek and efficient Flutter app that delivers the latest news at your fingertips. Powered by NewsAPI.org, it ensures you're always updated with the world's happenings, anytime, anywhere. Dive into a world of information with FlashNews."
 
+ ## Important
+ ```sh
+ I chose not to use the 'source' endpoint for fetching articles because I wanted to demonstrate my networking skills using the 'everything' endpoint, which offers a broader range of articles, including those with images. This choice not only showcases my ability to handle network requests but also enhances the visual appeal of the articles displayed in our app, as each article includes an image, making the user interface more engaging and informative.
+```
  ## Requirements
 
 - Flutter 3+
