@@ -1,13 +1,19 @@
 // Unique identifier for the task
+import 'package:dio/dio.dart';
 import 'package:workmanager/workmanager.dart';
 
 import '../../data/datasources/background_articles_datasource.dart';
+import '../../data/network/dio_client.dart';
+import '../constants/environment.dart';
 
 const fetchArticlesTask = 'fetchArticlesTask';
 
 void callbackDispatcher() {
   Workmanager().executeTask((taskName, inputData) async {
     if (taskName == fetchArticlesTask) {
+      BackgroundArticlesDatasource.configureDio(
+        DioClient(dio: Dio()).configuredDio(apiKey: Environment.newsApiKey),
+      );
       await BackgroundArticlesDatasource.fetchArticlesInBackground();
     }
     return Future.value(true);

@@ -3,21 +3,18 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../config/constants/environment.dart';
-
 class BackgroundArticlesDatasource {
-  static Future<String> fetchArticlesInBackground() async {
-    final Dio dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://newsapi.org/v2',
-        headers: {
-          'Authorization': 'Bearer ${Environment.newsApiKey}',
-        },
-      ),
-    );
+  static Dio? _dio;
+  static void configureDio(Dio? dio) {
+    _dio = dio;
+  }
 
+  static Future<String> fetchArticlesInBackground() async {
+    if (_dio == null) {
+      throw Exception('Dio not configured. Please call configureDio() first.');
+    }
     try {
-      final response = await dio
+      final response = await _dio!
           .get('/everything', queryParameters: {'q': 'bitcoin', 'page': 1});
       if (response.statusCode == 200) {
         final String articlesJson = jsonEncode(response.data);

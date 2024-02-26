@@ -1,9 +1,11 @@
-class ArticleResponseDto {
+import 'package:equatable/equatable.dart';
+
+class ArticleResponseDto extends Equatable {
   final String status;
   final int totalResults;
   final List<ArticleDTO> articles;
 
-  ArticleResponseDto({
+  const ArticleResponseDto({
     required this.status,
     required this.totalResults,
     required this.articles,
@@ -23,9 +25,12 @@ class ArticleResponseDto {
         'totalResults': totalResults,
         'articles': List<dynamic>.from(articles.map((x) => x.toJson())),
       };
+
+  @override
+  List<Object?> get props => [status, totalResults, articles];
 }
 
-class ArticleDTO {
+class ArticleDTO extends Equatable {
   final String source;
   final String author;
   final String title;
@@ -35,7 +40,7 @@ class ArticleDTO {
   final DateTime? publishedAt;
   final String content;
 
-  ArticleDTO({
+  const ArticleDTO({
     required this.source,
     required this.author,
     required this.title,
@@ -70,4 +75,17 @@ class ArticleDTO {
             publishedAt != null ? publishedAt!.toIso8601String() : '',
         'content': content,
       };
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        source,
+        author,
+        title,
+        description,
+        url,
+        urlToImage,
+        publishedAt,
+        content,
+      ];
 }

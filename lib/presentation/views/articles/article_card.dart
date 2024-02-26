@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/helpers/format_helper.dart';
@@ -32,35 +33,41 @@ class ArticleCard extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: (article.urlToImage != '')
-                    ? SizedBox(
-                        height: 100,
-                        child: Image.network(
-                          article.urlToImage,
-                          fit: BoxFit.cover,
-                          width: size.width * 0.3,
-                          errorBuilder: (
-                            BuildContext context,
-                            Object error,
-                            StackTrace? stackTrace,
-                          ) {
-                            // Here you can return any widget you want to show
-                            // in case of an error.
-                            // For example, an icon or a placeholder image.
-                            return SizedBox(
-                              height: 100,
-                              width: size.width * 0.3,
-                              child: const Icon(
-                                Icons.newspaper_outlined,
-                                size: 60,
-                              ),
-                            );
-                          },
+                    ? FadeIn(
+                        delay: const Duration(milliseconds: 700),
+                        child: SizedBox(
+                          height: 100,
+                          child: Image.network(
+                            article.urlToImage,
+                            fit: BoxFit.cover,
+                            width: size.width * 0.3,
+                            errorBuilder: (
+                              BuildContext context,
+                              Object error,
+                              StackTrace? stackTrace,
+                            ) {
+                              // Here you can return any widget you want to show
+                              // in case of an error.
+                              // For example, an icon or a placeholder image.
+                              return SizedBox(
+                                height: 100,
+                                width: size.width * 0.3,
+                                child: const Icon(
+                                  Icons.newspaper_outlined,
+                                  size: 60,
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       )
-                    : SizedBox(
-                        height: 100,
-                        width: size.width * 0.3,
-                        child: const Icon(Icons.newspaper_outlined, size: 60),
+                    : FadeIn(
+                        delay: const Duration(milliseconds: 500),
+                        child: SizedBox(
+                          height: 100,
+                          width: size.width * 0.3,
+                          child: const Icon(Icons.newspaper_outlined, size: 60),
+                        ),
                       ),
               ),
               const SizedBox(height: 8),
