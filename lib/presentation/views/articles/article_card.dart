@@ -5,7 +5,7 @@ import '../../../config/helpers/format_helper.dart';
 import '../../../domain/entities/article.dart';
 import '../../widgets/shared/favorite_toggle_button.dart';
 
-class ArticleCard extends StatelessWidget {
+class ArticleCard extends StatefulWidget {
   final Article article;
   final Size size;
   const ArticleCard({
@@ -14,6 +14,12 @@ class ArticleCard extends StatelessWidget {
     required this.size,
   });
 
+  @override
+  State<ArticleCard> createState() => _ArticleCardState();
+}
+
+class _ArticleCardState extends State<ArticleCard> {
+  bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,15 +38,15 @@ class ArticleCard extends StatelessWidget {
               // Image
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: (article.urlToImage != '')
+                child: (widget.article.urlToImage != '')
                     ? FadeIn(
                         delay: const Duration(milliseconds: 700),
                         child: SizedBox(
                           height: 100,
                           child: Image.network(
-                            article.urlToImage,
+                            widget.article.urlToImage,
                             fit: BoxFit.cover,
-                            width: size.width * 0.3,
+                            width: widget.size.width * 0.3,
                             errorBuilder: (
                               BuildContext context,
                               Object error,
@@ -51,7 +57,7 @@ class ArticleCard extends StatelessWidget {
                               // For example, an icon or a placeholder image.
                               return SizedBox(
                                 height: 100,
-                                width: size.width * 0.3,
+                                width: widget.size.width * 0.3,
                                 child: const Icon(
                                   Icons.newspaper_outlined,
                                   size: 60,
@@ -65,7 +71,7 @@ class ArticleCard extends StatelessWidget {
                         delay: const Duration(milliseconds: 500),
                         child: SizedBox(
                           height: 100,
-                          width: size.width * 0.3,
+                          width: widget.size.width * 0.3,
                           child: const Icon(Icons.newspaper_outlined, size: 60),
                         ),
                       ),
@@ -77,25 +83,26 @@ class ArticleCard extends StatelessWidget {
                 'Author:',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              (article.author.length > 13)
-                  ? Text('${article.author.substring(0, 13)}...')
-                  : Text(article.author),
+              (widget.article.author.length > 13)
+                  ? Text('${widget.article.author.substring(0, 13)}...')
+                  : Text(widget.article.author),
               const SizedBox(height: 10),
 
               //Publish Date
               Text(
                 FormatHelper.shortDate(
-                  article.publishedAt ?? DateTime.now(),
+                  widget.article.publishedAt ?? DateTime.now(),
                 ),
               ),
             ],
           ),
           const SizedBox(width: 10),
 
-          //* Title, Favorite Button and Description
+          //* Title, Favorite Button, Description and Content
           SizedBox(
-            width: size.width * 0.6,
+            width: widget.size.width * 0.6,
             child: Column(
+              mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Title and Favorite Button
@@ -103,11 +110,11 @@ class ArticleCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    (article.title.length > 45)
+                    (widget.article.title.length > 45)
                         ? SizedBox(
-                            width: size.width * 0.48,
+                            width: widget.size.width * 0.48,
                             child: Text(
-                              '${article.title.substring(0, 45)}...',
+                              '${widget.article.title.substring(0, 45)}...',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -115,9 +122,9 @@ class ArticleCard extends StatelessWidget {
                             ),
                           )
                         : SizedBox(
-                            width: size.width * 0.4,
+                            width: widget.size.width * 0.4,
                             child: Text(
-                              article.title,
+                              widget.article.title,
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -126,14 +133,28 @@ class ArticleCard extends StatelessWidget {
                           ),
                     const SizedBox(height: 5),
                     const Spacer(),
-                    FavoriteToggleButton(article: article),
+                    FavoriteToggleButton(article: widget.article),
                   ],
                 ),
 
                 // Description
-                (article.description.length > 140)
-                    ? Text('${article.description.substring(0, 140)}...')
-                    : Text(article.description),
+                (widget.article.description.length > 140)
+                    ? Text('${widget.article.description.substring(0, 140)}...')
+                    : Text(widget.article.description),
+
+                TextButton(
+                  onPressed: () => setState(() => isExpanded = !isExpanded),
+                  child: Text(
+                    isExpanded ? 'See less' : 'See more',
+                    style: const TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                // Content
+                if (isExpanded) Text(widget.article.content),
               ],
             ),
           ),
