@@ -56,3 +56,27 @@ If you want to create a new local table using Isar:
 2. Decorate your entity with `@collection`
 3. Add `Id? isarId;` field in your Entity Class
 3. Run the `dart run build_runner build` command.
+
+/*
+ * How to Run Tests in This App
+ * -----------------------------
+ * 
+ * Step 1: Generate Mocks and Other Required Files
+ * ------------------------------------------------
+ * Run the following commands in your terminal to generate mock classes and any other required files using build_runner:
+ * 
+ * flutter pub get
+ * flutter pub run build_runner build --delete-conflicting-outputs
+ * 
+ * Step 2: Running Tests
+ * ----------------------
+ * To run all tests in the project, execute:
+ * 
+ * flutter test
+ * 
+ * To run a specific test file, use:
+ * 
+ * flutter test test/path_to_your_test_file.dart
+ * 
+ * Make sure to regenerate files with build_runner if you have made changes to files that affect code generation.
+ */
